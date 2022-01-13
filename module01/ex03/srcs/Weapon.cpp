@@ -6,7 +6,7 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 12:26:47 by yjung             #+#    #+#             */
-/*   Updated: 2021/09/19 12:27:29 by yjung            ###   ########.fr       */
+/*   Updated: 2022/01/14 05:44:03 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void Weapon::setType(std::string type)
 	this->type = type;
 }
 
-std::string &Weapon::getType()
+const std::string &Weapon::getType(void) const
 {
 	return (this->type);
 }
