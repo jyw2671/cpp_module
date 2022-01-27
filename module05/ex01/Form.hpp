@@ -6,7 +6,7 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:23:35 by yjung             #+#    #+#             */
-/*   Updated: 2022/01/26 15:35:58 by yjung            ###   ########.fr       */
+/*   Updated: 2022/01/27 16:48:44 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Form {
 		bool isSigned;
 		const int gradeSign;
 		const int gradeExecute;
-		Form() : name("no name"), gradeSign(1), gradeExecute(1) {}
+		Form() : name(""), gradeSign(1), gradeExecute(1) {}
 
 	public:
 		Form(std::string name, int gradeSign, int gradeExecute);
@@ -36,7 +36,7 @@ class Form {
 		int getGradeSign() const;
 		int getGradeExecute() const;
 
-		void beSigned(Bureaucrat& b);
+		void beSigned(Bureaucrat& bureaucrat);
 
 		class GradeTooHighException : public std::exception {
 			public :

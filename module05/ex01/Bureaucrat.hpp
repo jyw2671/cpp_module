@@ -6,7 +6,7 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:14:28 by yjung             #+#    #+#             */
-/*   Updated: 2022/01/26 15:35:16 by yjung            ###   ########.fr       */
+/*   Updated: 2022/01/27 16:23:12 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat {
 	private:
 		const std::string name;
 		int grade;
-		Bureaucrat() : name("no name") {}
+		Bureaucrat() : name("") {}
 
 	public:
 		Bureaucrat(std::string name, int grade);
@@ -53,3 +53,5 @@ class Bureaucrat {
 };
 
 std::ostream& operator<<(std::ostream &out, Bureaucrat const &bureaucrat);
+
+#endif

@@ -6,15 +6,14 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:09:29 by yjung             #+#    #+#             */
-/*   Updated: 2022/01/26 15:32:15 by yjung            ###   ########.fr       */
+/*   Updated: 2022/01/27 16:42:52 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-static Bureaucrat *input_info()
-{
+Bureaucrat *input_info() {
 	std::string name;
 	int grade;
 
@@ -23,30 +22,31 @@ static Bureaucrat *input_info()
 		std::cin >> name;
 		std::cout << "grade : ";
 		std::cin >> grade;
-		return new Bureaucrat(name, grade);
+		return (new Bureaucrat(name, grade));
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
-		return input_info();
+		return (input_info());
 	}
 }
 
-int main()
-{
+int main() {
 	{
-		Bureaucrat *b = input_info();
+		Bureaucrat *yjung = input_info();
 
-		std::cout << *b << std::endl;
+		std::cout << *yjung << std::endl;
 		try {
-			b->incrementGrade(3);
-			std::cout << *b << std::endl;
-			b->incrementGrade();
-			std::cout << *b << std::endl;
+			std::cout << "-----   incrementGrade(3)   -------" << std::endl;
+			yjung->incrementGrade(3);
+			std::cout << *yjung << std::endl;
+			std::cout << "------   decrementGrade(3)   -------" << std::endl;
+			yjung->decrementGrade(3);
+			std::cout << *yjung << std::endl;
 		}
 		catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
-		delete b;
+		delete yjung;
 	}
 	// system("leaks ex00");
 	return (0);

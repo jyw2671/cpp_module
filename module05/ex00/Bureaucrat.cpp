@@ -6,18 +6,18 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:09:31 by yjung             #+#    #+#             */
-/*   Updated: 2022/01/26 15:34:26 by yjung            ###   ########.fr       */
+/*   Updated: 2022/01/27 12:55:53 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name){
-	this->grade = grade;
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
+	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &c) : name(c.getName()) {

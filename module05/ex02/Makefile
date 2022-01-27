@@ -1,10 +1,16 @@
 NAME = ex02
 
+# CC = clang++
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 RM = rm -rf
 
 SRCS = 	./main.cpp	\
+	./Bureaucrat.cpp	\
+	./Form.cpp	\
+	./PresidentialPardonForm.cpp	\
+	./RobotomyRequestForm.cpp	\
+	./ShrubberyCreationForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

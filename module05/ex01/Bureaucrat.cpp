@@ -6,7 +6,7 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:20:49 by yjung             #+#    #+#             */
-/*   Updated: 2022/01/26 15:35:05 by yjung            ###   ########.fr       */
+/*   Updated: 2022/01/27 13:16:38 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name){
-	this->grade = grade;
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
+	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &c) : name(c.getName()) {
@@ -53,13 +53,14 @@ void Bureaucrat::decrementGrade(int amount) {
 	this->grade += amount;
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this);
 		std::cout << this->name << " signs " << form.getName() << std::endl;
 	}
 	catch (std::exception &e) {
-		std::cout << this->name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << this->name << " cannot sign " << form.getName() \
+			<< " because " << e.what() << std::endl;
 	}
 }
 
