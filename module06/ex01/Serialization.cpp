@@ -6,15 +6,14 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:09:00 by yjung             #+#    #+#             */
-/*   Updated: 2022/02/05 13:52:58 by yjung            ###   ########.fr       */
+/*   Updated: 2022/02/05 14:08:36 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serialization.hpp"
 
 uintptr_t serialize(Data *ptr) {
-	// char *raw = new char[sizeof(int) + ptr->name.size() + sizeof(double)];
-	char *raw = new char[sizeof(int) + ptr->name.size()];
+	char *raw = new char[sizeof(int) + ptr->name.size() + sizeof(double)];
 	*(reinterpret_cast<int *>(raw)) = ptr->age;
 	*(reinterpret_cast<std::string *>(raw + sizeof(int))) = ptr->name;
 	*(reinterpret_cast<double *>(raw + sizeof(int) + ptr->name.size() + 1)) = ptr->score;
