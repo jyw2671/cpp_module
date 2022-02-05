@@ -6,7 +6,7 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:44:53 by yjung             #+#    #+#             */
-/*   Updated: 2022/02/05 16:36:53 by yjung            ###   ########.fr       */
+/*   Updated: 2022/02/05 17:32:24 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ std::string const &ScalarConverter::getValue() const {
 char ScalarConverter::toChar() const {
 	int n;
 
+	if (this->value.size() == 1 && isalpha(this->value[0])) {
+		return (this->value[0]);
+	}
 	try {
 		n = std::stoi(this->value);
 		if (n < 0 || n > 255) {
