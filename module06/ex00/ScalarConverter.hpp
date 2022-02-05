@@ -6,78 +6,49 @@
 /*   By: yjung <yjung@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:43:39 by yjung             #+#    #+#             */
-/*   Updated: 2022/01/28 12:11:04 by yjung            ###   ########.fr       */
+/*   Updated: 2022/02/05 16:27:19 by yjung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER__HPP
 # define SCALARCONVERTER__HPP
 
-# include <iostream>
-# include <sstream>
-# include <limits>
-# include <iomanip>
+#include <iostream>
+#include <string>
 
-# define TYPE_CHAR 1
-# define TYPE_INT 2
-# define TYPE_FLOAT 3
-# define TYPE_DOUBLE 4
-# define TYPE_FLOAT_IMPOSSIBLE 5
-# define TYPE_DOUBLE_IMPOSSIBLE 6
-
-class ScalarConverter {
-
+class ScalarConverter
+{
 	private:
-		std::string value;
-		int value_size;
-		int type;
-		double d;
-		float f;
-		int i;
-		char c;
-		int	 precision;
-		std::stringstream doubleStr;
-		std::stringstream floatStr;
-		std::stringstream intStr;
-		std::stringstream charStr;
-		ScalarConverter() {}
+		const std::string value;
+		ScalarConverter() : value("error"){};
 
 	public:
-		ScalarConverter(char *arg);
-		~ScalarConverter();
-		ScalarConverter(ScalarConverter const &);
-		ScalarConverter& operator=(ScalarConverter const &);
+		ScalarConverter(std::string const &value) : value(value){};
+		ScalarConverter(ScalarConverter const &c) {
+			*this = c;
+		};
+		ScalarConverter& operator=(ScalarConverter const &) {
+			return (*this);
+		};
+		~ScalarConverter(){};
+		std::string const &getValue() const;
+		char toChar() const;
+		int toInt() const;
+		float toFloat() const;
+		double toDouble() const;
 
-		std::string const & getValue() const;
-		int getType() const;
-		double getDouble() const;
-		float getFloat() const;
-		int getInt() const;
-		char getChar() const;
-		int getPrecision() const;
-		std::stringstream const &getDoubleStr() const;
-		std::stringstream const &getFloatStr() const;
-		std::stringstream const &getIntStr() const;
-		std::stringstream const &getCharStr() const;
-
-		void convert(ScalarConverter&);
-		void parse();
-		void typeBranch();
-		void charConverter();
-		void intConverter();
-		void floatConverter();
-		void doubleConverter();
-
-		void setCharStream();
-
-		class ArgumentException : public std::exception {
-			public :
-				virtual const char* what() const throw() {
-					return ("Error : argument.");
-				}
+		class ImpossibleException : public std::exception {
+			const char *what() const throw() {
+				return "impossible";
+			}
+		};
+		class NonDisplayableException : public std::exception {
+			const char *what() const throw() {
+				return "Non displayable";
+			}
 		};
 };
 
-std::ostream& operator<<(std::ostream &out, ScalarConverter& s);
+std::ostream &operator<<(std::ostream &os, ScalarConverter const &scalar);
 
 #endif
